@@ -1,9 +1,388 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>data_architect</title>
-    </head>
-    <body>
-        hello there mahesh rathod is here!!!!
-    </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mahesh Rathod's Portfolio</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts: Roboto -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Custom Styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      height: 100vh;
+      overflow: auto; /* Allow scrolling */
+    }
+
+    .container-fluid {
+      height: 100%;
+      display: flex;
+      padding: 0;
+    }
+
+    .left-sidebar {
+      background-color: #f4f4f4;
+      width: 25%;
+      text-align: center;
+      padding-top: 40px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .profile-photo {
+      width: calc(100% - 20px);
+      height: auto;
+      object-fit: cover;
+      margin: 10px auto;
+      border-radius: 0;
+    }
+
+    .name {
+      font-size: 1.5em;
+      font-weight: 500;
+      margin-top: 10px;
+      color: #007bff;
+    }
+
+    .social-links img {
+      width: 30px;
+      margin: 10px;
+    }
+
+    .right-content {
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+      max-height: 100vh; /* Restrict the height of the right content */
+      padding-left: 30px;
+      overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+
+    .card-section {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .card-section:hover {
+      transform: translateY(-10px);
+      box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      justify-items: center; /* Center the project cards */
+    }
+
+    .project-card {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      padding: 15px; /* Adjust padding for compact look */
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 250px; /* Fixed width for consistency */
+      height: 150px; /* Fixed height for uniformity */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px); /* Subtle hover effect */
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-card h5 {
+      font-size: 1em;
+      font-weight: bold;
+      color: #007bff;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .project-card p {
+      font-size: 0.85em;
+      color: #555;
+      text-align: center;
+    }
+    /* Timeline Grid Styling */
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px 0;
+    }
+    .timeline-card {
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .timeline-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .timeline-card h5 {
+      font-size: 1.2em;
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+
+    .timeline-card .time-period {
+      font-size: 0.9em;
+      color: #777;
+      margin-bottom: 10px;
+    }
+
+    .timeline-card button {
+      color: #007bff;
+      font-size: 0.9em;
+    }
+
+    .timeline-card button:hover {
+      text-decoration: underline;
+    }
+
+    .timeline-card .collapse p {
+      margin-top: 10px;
+      font-size: 0.85em;
+      color: #333;
+    }
+    
+    .timeline-item h5 {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .timeline-item .timeline-content {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .timeline-item .timeline-gif {
+      width: 100%; /* Makes the GIF fit inside the card */
+      max-width: 400px; /* Adjust as needed */
+      height: auto;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+
+    .timeline-item .time-period {
+      font-size: 0.8em;
+      color: #999;
+      margin-bottom: 8px;
+    }
+
+    /* Remove the vertical blue line from timeline */
+    .timeline::before {
+      content: none; /* Removed the vertical line */
+    }
+
+    /* Add space between timeline cards */
+    .timeline-item {
+      margin-bottom: 20px;
+      border-left: none;
+      padding-left: 20px;
+    }
+    .timeline-item .collapse {
+      margin-top: 10px;
+    }
+
+    .timeline-item .btn-link {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .timeline-item .btn-link:hover {
+      text-decoration: underline;
+    }
+
+    /* About Me Section Style */
+    .about-me {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .about-me img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .about-me-text {
+      flex: 1;
+      font-size: 1em;
+      color: #333;
+    }
+
+    /* Adjustments for project cards */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      justify-items: center; /* Center the project cards */
+    }
+
+    /* Media Queries for responsiveness */
+    @media (max-width: 768px) {
+      .timeline-item {
+        flex: 1 1 100%;
+      }
+
+      .timeline {
+        padding-left: 10px;
+      }
+
+      .timeline-item:nth-child(odd), .timeline-item:nth-child(even) {
+        margin-left: 0;
+        margin-right: 0;
+        border: none;
+      }
+
+      .left-sidebar {
+        width: 100%;
+        position: relative;
+        padding-top: 40px;
+      }
+
+      .right-content {
+        margin-left: 0;
+      }
+
+      /* Make the About Me section stack on small screens */
+      .about-me {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about-me img {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Left Sidebar -->
+      <div class="col-3 left-sidebar d-flex flex-column align-items-center py-4">
+        <img src="static/profile.jpg" alt="Your Photo" class="profile-photo">
+        <h2 class="name">Mahesh Rathod</h2>
+        <div class="social-links d-flex justify-content-center mt-3">
+          <a href="https://www.linkedin.com/in/mahesh-rathod-83a9a1278?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/LinkedIn_logo_2013.svg" alt="LinkedIn" width="30">
+          </a>
+          <a href="https://github.com/R-Mahesh45" target="_blank">
+            <img src="static/github.png" alt="GitHub">
+          </a>
+          <a href="https://www.instagram.com/oops_architect/" target="_blank">
+            <img src="static/instagram.png" alt="Instagram">
+          </a>
+          <a href="https://www.youtube.com/@Oops_Data_Guy" target="_blank">
+            <img src="static/youtube.png" alt="YouTube">
+          </a>
+        </div>
+        <nav class="mt-4">
+          <a href="#about" class="d-block mb-2 text-decoration-none text-dark">About</a>
+          <a href="#contact" class="d-block text-decoration-none text-dark">Contact Us</a>
+        </nav>
+      </div>
+
+      <!-- Right Content Area -->
+      <div class="col-9 right-content">
+        <!-- Career Timeline Section -->
+        <section id="career" class="card-section">
+          <h2>Career Timeline</h2>
+          <div class="timeline-grid">
+            <div class="timeline-card">
+              <h5>Connell Caldic (Asia Pacific) - Data Science Intern</h5>
+              <p class="time-period">July 2024 - November 2024</p>
+              <p>Market Study | Digital Marketing</p>
+              <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#details1" aria-expanded="false">
+                Read More
+              </button>
+              <div class="collapse" id="details1">
+                <p>🚀 Data Science & Web Scraping Projects 🚀</p>
+              </div>
+            </div>
+
+            <div class="timeline-card">
+              <h5>AI Variant Bengaluru - Data Science Intern</h5>
+              <p class="time-period">January 2024 - June 2024</p>
+              <p>Finance | Forecast Gold Prices</p>
+              <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#details2" aria-expanded="false">
+                Read More
+              </button>
+              <div class="collapse" id="details2">
+                <p>💰 Gold Price Prediction Model 💰</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- Projects Section -->
+        <section id="projects" class="card-section">
+          <h2>Projects</h2>
+          <div class="projects-grid">
+            <a href="project1.html" class="project-card">
+              <h5>Connell-intelligent-Market-Study</h5>
+              <p>Click Here For More Detailed View</p>
+            </a>
+            <a href="project2.html" class="project-card">
+              <h5>GenAI Architecture Development Project</h5>
+              <p>Click Here For More Detailed View</p>
+            </a>
+            <a href="project3.html" class="project-card">
+              <h5>CNN-image-detection-model</h5>
+              <p>Click Here For More Detailed View</p>
+            </a>
+            <a href="project4.html" class="project-card">
+              <h5>Machine Learning Model</h5>
+              <p>Built and trained a machine learning model to predict trends and outcomes in the data set.</p>
+            </a>
+          </div>
+        </section>
+
+
+
+        <!-- About Me Section -->
+        <section id="about" class="card-section">
+          <h2>About Me</h2>
+          <div class="about-me">
+            <img src="static/about.jpg" alt="Your Photo">
+            <div class="about-me-text">
+              <p>I am an architect and data scientist, passionate about leveraging technology to create meaningful and efficient solutions. I aim to innovate in both the construction industry and AI/ML fields.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section id="contact" class="card-section">
+          <h2>Contact</h2>
+          <p>Email: <a href="mailto:mahesh.rathod@example.com">mahesh.rathod@example.com</a></p>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
