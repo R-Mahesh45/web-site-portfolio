@@ -35,23 +35,29 @@
     }
 
     .profile-photo {
-      width: calc(100% - 20px);
+      width: calc(100% - 10px);
       height: auto;
       object-fit: cover;
       margin: 10px auto;
-      border-radius: 0;
+      border-radius: 10px; /* This makes the photo have rounded corners */
     }
 
     .name {
       font-size: 1.5em;
       font-weight: 500;
       margin-top: 10px;
-      color: #007bff;
+      color: #333;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
     }
 
     .social-links img {
       width: 30px;
-      margin: 10px;
+      margin: 5px; /* Reduced margin for tighter spacing */
     }
 
     .right-content {
@@ -76,6 +82,66 @@
       transform: translateY(-10px);
       box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.2);
     }
+    /* Styling for the Projects Section */
+    #projects {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    h2 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .project-card {
+      display: block;
+      background: #222;
+      color: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+
+    .project-card h5 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      font-size: 1rem;
+      color: #ddd;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-card:focus, .project-card:hover {
+      outline: none;
+    }
+
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+        padding: 0;
+      }
+    }
+
 
     .projects-grid {
       display: grid;
@@ -105,7 +171,7 @@
     .project-card h5 {
       font-size: 1em;
       font-weight: bold;
-      color: #007bff;
+      color: black;
       margin-bottom: 8px;
       text-align: center;
     }
@@ -161,7 +227,7 @@
       font-size: 0.85em;
       color: #333;
     }
-    
+
     .timeline-item h5 {
       font-family: 'Roboto', sans-serif;
     }
@@ -218,8 +284,8 @@
     }
 
     .about-me img {
-      width: 200px;
-      height: 200px;
+      width: 250px;
+      height: 250px;
       object-fit: cover;
       border-radius: 10px;
     }
@@ -285,9 +351,6 @@
         <img src="static/profile.jpg" alt="Your Photo" class="profile-photo">
         <h2 class="name">Mahesh Rathod</h2>
         <div class="social-links d-flex justify-content-center mt-3">
-          <a href="https://www.linkedin.com/in/mahesh-rathod-83a9a1278?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/LinkedIn_logo_2013.svg" alt="LinkedIn" width="30">
-          </a>
           <a href="https://github.com/R-Mahesh45" target="_blank">
             <img src="static/github.png" alt="GitHub">
           </a>
@@ -318,7 +381,16 @@
                 Read More
               </button>
               <div class="collapse" id="details1">
-                <p>🚀 Data Science & Web Scraping Projects 🚀</p>
+                <p>🚀 Data Science & Web Scraping Projects 🚀
+                🔍 Text Mining Project: Mastered the art of data extraction from dynamic PDFs using dpydf2, tabula-py, and pandas. Applied advanced text mining techniques to clean and analyze data, uncovering actionable insights and identifying key patterns. 📊🔎
+
+                🌐 Web Scraping for Digital Marketing: Spearheaded a successful project to scrape flavor and ingredient data from Indiamart using Selenium and BeautifulSoup. 📈 Expanded the dataset from 60 to over 2,000 rows, boosting product and seller insights by leaps and bounds. 📦✨
+
+                📊 Industry Reporting: Collaborated with global teams in Thailand 🇹🇭 and Brazil 🇧🇷 to create comprehensive Power BI reports for ingredient analysis. Leveraged DAX, Power Query, and bridge tables to drive data insights. 📈💼
+
+                📊 Portfolio Analysis: Partnered with a business analyst from Brazil to craft interactive Power BI dashboards, using advanced DAX functions, slicers, and filters for a dynamic, user-friendly experience. 📊🎯
+
+                🌍 Global Collaboration: Gained invaluable insights and best practices through teamwork with international colleagues like Danies (Thailand) and Raphael (Brazil), all under the mentorship of senior team leaders. 🤝🌟</p>
               </div>
             </div>
 
@@ -330,7 +402,18 @@
                 Read More
               </button>
               <div class="collapse" id="details2">
-                <p>💰 Gold Price Prediction Model 💰</p>
+                <p>💰 Gold Price Prediction Model 💰
+                📊 Data Cleaning & Exploration: Conducted thorough data cleaning, manipulation, and exploratory data analysis (EDA) on time-series data, ensuring high-quality input for predictive modeling. 🔍📅
+
+                🔧 Model Development & Deployment: Built and deployed a prediction model using Streamlit, turning insights into real-time predictions. 🚀📈
+
+                📉 Time Series Analysis: Performed detailed time series analysis on gold price data from 2016 to 2021, identifying key patterns and trends across various time intervals. ⏳📉
+
+                🔮 Forecasting Future Prices: Developed a time series forecasting model to predict day-wise gold prices, enhancing decision-making for financial strategies. 💡💰
+
+                📈 Performance Optimization: After optimizing the model, its accuracy soared from 76% to 97%, showcasing my expertise in financial data analysis and predictive modeling. 🔝✅
+
+                Jan 2024 – Mar 2024</p>
               </div>
             </div>
           </div>
@@ -338,20 +421,21 @@
 
 
         <!-- Projects Section -->
+        <!-- Projects Section -->
         <section id="projects" class="card-section">
           <h2>Projects</h2>
           <div class="projects-grid">
             <a href="project1.html" class="project-card">
-              <h5>Connell-intelligent-Market-Study</h5>
-              <p>Click Here For More Detailed View</p>
+              <h5>Connell Intelligent Market Study</h5>
+              <p>Click here for more details.</p>
             </a>
             <a href="project2.html" class="project-card">
-              <h5>GenAI Architecture Development Project</h5>
-              <p>Click Here For More Detailed View</p>
+              <h5>GenAI Architecture Development</h5>
+              <p>Click here for more details.</p>
             </a>
             <a href="project3.html" class="project-card">
-              <h5>CNN-image-detection-model</h5>
-              <p>Click Here For More Detailed View</p>
+              <h5>CNN Image Detection Model</h5>
+              <p>Click here for more details.</p>
             </a>
             <a href="project4.html" class="project-card">
               <h5>Machine Learning Model</h5>
@@ -359,6 +443,7 @@
             </a>
           </div>
         </section>
+
 
 
 
@@ -376,7 +461,8 @@
         <!-- Contact Us Section -->
         <section id="contact" class="card-section">
           <h2>Contact</h2>
-          <p>Email: <a href="mailto:mahesh.rathod@example.com">mahesh.rathod@example.com</a></p>
+          <p>Email: <a href="maheshrathod2236@gmail.com">maheshrathod2236@gmail.com</a></p>
+          <p>Mobile Number: <a href="9146395271">9146395271</a></p>
         </section>
       </div>
     </div>
